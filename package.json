@@ -2,10 +2,11 @@
   "name": "adblock-detector",
   "version": "1.0.0",
   "description": "Simple library for detecting ad blocker presence on web page",
-  "main": "index.js",
+  "main": "./dist/es5/index.js",
   "scripts": {
     "test": "test",
-    "dev": "npx babel -w src --out-dir dist --presets=env"
+    "dev": "npm run dev:es5",
+    "dev:es5": "npx babel -w src --out-dir dist/es5 --presets=env --plugins=transform-runtime,transform-es2015-modules-amd"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1"
   }
 }

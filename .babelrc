@@ -1,0 +1,10 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 4 versions", ">1%"]
+      }
+    }]
+  ],
+  "plugins": ["transform-runtime"]
+}
