@@ -13,10 +13,8 @@
     "url": "git+https://github.com/Icokie/adblock-detector.git"
   },
   "keywords": [
-    "adblock",
-    "detector",
-    "anti",
-    "adblock"
+    "adblock detector",
+    "anti adblock"
   ],
   "author": "icokie",
   "license": "MIT",
