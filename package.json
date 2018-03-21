@@ -4,7 +4,8 @@
   "description": "Simple library for detecting ad blocker presence on web page",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "dev": "npx babel -w src --out-dir dist --presets=env"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/Icokie/adblock-detector/issues"
   },
-  "homepage": "https://github.com/Icokie/adblock-detector#readme"
+  "homepage": "https://github.com/Icokie/adblock-detector#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
 }
