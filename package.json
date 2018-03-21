@@ -1,0 +1,25 @@
+{
+  "name": "adblock-detector",
+  "version": "1.0.0",
+  "description": "Simple library for detecting ad blocker presence on web page",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Icokie/adblock-detector.git"
+  },
+  "keywords": [
+    "adblock",
+    "detector",
+    "anti",
+    "adblock"
+  ],
+  "author": "icokie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Icokie/adblock-detector/issues"
+  },
+  "homepage": "https://github.com/Icokie/adblock-detector#readme"
+}
