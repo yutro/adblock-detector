@@ -6,5 +6,4 @@
       }
     }]
   ],
-  "plugins": ["transform-runtime"]
 }
