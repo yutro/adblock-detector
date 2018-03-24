@@ -1,12 +1,12 @@
 {
   "name": "adblock-detector",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simple library for detecting ad blocker presence on web page",
-  "main": "./dist/es5/index.js",
+  "main": "./dist/main.js",
   "scripts": {
     "test": "test",
-    "dev": "npm run dev:es5",
-    "dev:es5": "npx babel -w src --out-dir dist/es5 --presets=env --plugins=transform-runtime,transform-es2015-modules-amd"
+    "dev": "./node_modules/webpack/bin/webpack.js --watch --progress --mode development",
+    "build": "./node_modules/webpack/bin/webpack.js --progress --mode production"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,11 @@
     "url": "https://github.com/Icokie/adblock-detector/issues"
   },
   "homepage": "https://github.com/Icokie/adblock-detector#readme",
-  "dependencies": {},
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1"
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "babel-loader": "^7.1.4",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.13"
   }
 }
