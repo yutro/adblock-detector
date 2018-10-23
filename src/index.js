@@ -1,3 +1,8 @@
+/**
+ * Micro library for detect adblock on user page
+ *
+ * @class AdblockDetector
+ */
 class AdblockDetector {
     constructor() {
         this._bannerIds = [
@@ -8,28 +13,62 @@ class AdblockDetector {
             'ad-lead'
         ];
     }
-
+    
+    /**
+     * Init library - add some tags to page with ads ids
+     *
+     * @returns {Void} Init detection
+     * @memberof AdblockDetector
+     */
     init() {
         const dataContainer = document.createElement('div');
         dataContainer.innerHTML = this._generatesBannersString();
-        return document.body.appendChild(dataContainer);
+
+        document.body.appendChild(dataContainer);
     }
 
+    /**
+     * Check enabling adblock
+     *
+     * @returns {Boolean} Status adblock enabling
+     * @memberof AdblockDetector
+     */
     detect() {
-        return !this._bannerIds.every(AdblockDetector._checkVisibility)
+        return !this._bannerIds.every(bannerId => this._checkVisibility(bannerId))
     }
 
+    /**
+     * Generate all ads blocks from ids disctionary
+     *
+     * @returns {String} Ads blocks
+     * @private
+     * @memberof AdblockDetector
+     */
     _generatesBannersString() {
-        const testBanners = this._bannerIds.map(bannerId => `<div id="${bannerId}"></div>`);
-        return testBanners.join('');
+        return this
+            ._bannerIds
+            .map(bannerId => `<div id="${bannerId}"></div>`)
+            .join('');
     }
-    static _checkVisibility(bannerId) {
+
+    /**
+     * Check visibility by banner id
+     *
+     * @param {Number} bannerId
+     * @returns {HTMLElement|null} Return banners if adblocke is not enabled
+     * @private
+     * @memberof AdblockDetector
+     */
+    _checkVisibility(bannerId) {
         const el = document.querySelector(`#${bannerId}`);
-        if(el) {
+
+        if (el) {
             return el.offsetParent;
-        } else {
-            console.warn('adblock-detector: can\'t detect ad blocker');
         }
+
+        console.warn('adblock-detector: can\'t detect ad blocker');
+        
+        return null;
     }
 
 }
