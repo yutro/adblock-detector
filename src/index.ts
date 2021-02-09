@@ -5,7 +5,7 @@ type BannerIdType = string
  *
  * @class AdblockDetector
  */
-class AdblockDetector {
+export class AdblockDetector {
     bannerIds: ReadonlyArray<BannerIdType>;
 
     constructor() {
@@ -16,20 +16,20 @@ class AdblockDetector {
             'homead',
             'ad-lead'
         ];
+        this.init()
     }
     
     /**
      * Init library - add some tags to page with ads ids
      *
-     * @returns {Void} Init detection
+     * @returns {void} create detector instance
      * @memberof AdblockDetector
      */
-    async init() {
+    private init() {
         const dataContainer = document.createElement('div');
         dataContainer.innerHTML = this.generatesBannersString();
 
         document.body.appendChild(dataContainer);
-        return true
     }
 
     /**
@@ -49,7 +49,7 @@ class AdblockDetector {
      * @private
      * @memberof AdblockDetector
      */
-    generatesBannersString() {
+    private generatesBannersString() {
         return this
             .bannerIds
             .map(bannerId => `<div id="${bannerId}"></div>`)
