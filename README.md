@@ -5,9 +5,9 @@ Micro library for detect adblock on user page
 ###Usage:
 ```javascript
 
-import { init, detect } from 'adblock-detector';
+import AdblockDetector from 'adblock-detector';
 
-const userHasAdblock = init(detect);  
+const userHasAdblock = AdblockDetector.detect();  
 // true if user has it false if not
 
 ```
