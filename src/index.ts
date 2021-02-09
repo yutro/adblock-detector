@@ -1,11 +1,15 @@
+type BannerIdType = string
+
 /**
  * Micro library for detect adblock on user page
  *
  * @class AdblockDetector
  */
 class AdblockDetector {
+    bannerIds: ReadonlyArray<BannerIdType>;
+
     constructor() {
-        this._bannerIds = [
+        this.bannerIds = [
             'AdHeader',
             'AdContainer',
             'AD_Top',
@@ -20,11 +24,12 @@ class AdblockDetector {
      * @returns {Void} Init detection
      * @memberof AdblockDetector
      */
-    init() {
+    async init() {
         const dataContainer = document.createElement('div');
-        dataContainer.innerHTML = this._generatesBannersString();
+        dataContainer.innerHTML = this.generatesBannersString();
 
         document.body.appendChild(dataContainer);
+        return true
     }
 
     /**
@@ -34,7 +39,7 @@ class AdblockDetector {
      * @memberof AdblockDetector
      */
     detect() {
-        return !this._bannerIds.every(bannerId => this._checkVisibility(bannerId))
+        return !this.bannerIds.every(bannerId => this.checkVisibility(bannerId))
     }
 
     /**
@@ -44,9 +49,9 @@ class AdblockDetector {
      * @private
      * @memberof AdblockDetector
      */
-    _generatesBannersString() {
+    generatesBannersString() {
         return this
-            ._bannerIds
+            .bannerIds
             .map(bannerId => `<div id="${bannerId}"></div>`)
             .join('');
     }
@@ -59,14 +64,10 @@ class AdblockDetector {
      * @private
      * @memberof AdblockDetector
      */
-    _checkVisibility(bannerId) {
-        const el = document.querySelector(`#${bannerId}`);
+    checkVisibility(bannerId: BannerIdType) {
+        const el = document.querySelector<HTMLDivElement>(`#${bannerId}`);
 
-        if (el) {
-            return el.offsetParent;
-        }
-
-        console.warn('adblock-detector: can\'t detect ad blocker');
+        if (el) return el.offsetParent;
         
         return null;
     }
