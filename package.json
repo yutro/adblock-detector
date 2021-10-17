@@ -30,9 +30,5 @@
   "homepage": "https://github.com/Icokie/adblock-detector#readme",
   "devDependencies": {
     "typescript": "4.4.4"
-  },
-  "dependencies": {
-    "global": "^4.4.0",
-    "npm-check-updates": "^11.8.5"
   }
 }
