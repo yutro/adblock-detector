@@ -43,7 +43,7 @@ export class AdblockDetector {
     }
 
     /**
-     * Generate all ads blocks from ids disctionary
+     * Generate all ads blocks from ids dictionary
      *
      * @returns {String} Ads blocks
      * @private
@@ -60,7 +60,7 @@ export class AdblockDetector {
      * Check visibility by banner id
      *
      * @param {Number} bannerId
-     * @returns {HTMLElement|null} Return banners if adblocke is not enabled
+     * @returns {HTMLElement|null} Return banners if adblock is not enabled
      * @private
      * @memberof AdblockDetector
      */
