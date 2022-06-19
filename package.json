@@ -19,8 +19,19 @@
     "url": "git+https://github.com/Icokie/adblock-detector.git"
   },
   "keywords": [
-    "adblock detector",
-    "anti adblock"
+    "adblockdetector",
+    "adblock",
+    "adblocker",
+    "addetection",
+    "adblockerdetection",
+    "detectads",
+		"advertising",
+		"ad",
+		"block",
+    "blockads",
+		"lock",
+		"detection",
+		"detecting"
   ],
   "author": "icokie (Yury Troynov)",
   "license": "MIT",
