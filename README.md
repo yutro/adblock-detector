@@ -1,6 +1,6 @@
 # AdblockDetector
 
-Micro library for detect adblock on user page
+Micro library for detecting adblock presense in user browser
 
 ![npm version](https://img.shields.io/npm/v/adblock-detector.svg)
 ![package size minified](https://img.shields.io/bundlephobia/min/adblock-detector?style=plastic)
