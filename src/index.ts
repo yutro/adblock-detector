@@ -1,7 +1,7 @@
 type BannerIdType = string
 
 /**
- * Micro library for detect adblock on user page
+ * Micro library for detecting adblock on user page
  *
  * @class AdblockDetector
  */
@@ -73,5 +73,3 @@ export class AdblockDetector {
     }
 
 }
-
-export default new AdblockDetector();
