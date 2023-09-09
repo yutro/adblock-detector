@@ -1,3 +1,5 @@
+'use client'
+
 type BannerIdType = string
 
 /**
@@ -6,30 +8,29 @@ type BannerIdType = string
  * @class AdblockDetector
  */
 export class AdblockDetector {
-    bannerIds: ReadonlyArray<BannerIdType>;
+    bannerIds: readonly BannerIdType[]
 
     constructor() {
-        this.bannerIds = [
-            'AdHeader',
-            'AdContainer',
-            'AD_Top',
-            'homead',
-            'ad-lead'
-        ];
+        this.bannerIds = ['AdHeader', 'AdContainer', 'AD_Top', 'homead', 'ad-lead']
         this.init()
     }
-    
+
     /**
      * Init library - add some tags to page with ads ids
      *
      * @returns {void} create detector instance
      * @memberof AdblockDetector
      */
-    private init() {
-        const dataContainer = document.createElement('div');
-        dataContainer.innerHTML = this.generatesBannersString();
+    private init(): void {
+        if (!this.isBrowser()) {
+            throw new Error('Detection on server side is not supported. Please use library only on client side.')
+        }
 
-        document.body.appendChild(dataContainer);
+        const dataContainer = document.createElement('div')
+
+        dataContainer.innerHTML = this.generatesBannersString()
+
+        document.body.append(dataContainer)
     }
 
     /**
@@ -38,8 +39,8 @@ export class AdblockDetector {
      * @returns {Boolean} Status adblock enabling
      * @memberof AdblockDetector
      */
-    detect() {
-        return !this.bannerIds.every(bannerId => this.checkVisibility(bannerId))
+    detect(): boolean {
+        return !this.bannerIds.every((bannerId) => this.checkVisibility(bannerId))
     }
 
     /**
@@ -49,11 +50,8 @@ export class AdblockDetector {
      * @private
      * @memberof AdblockDetector
      */
-    private generatesBannersString() {
-        return this
-            .bannerIds
-            .map(bannerId => `<div id="${bannerId}"></div>`)
-            .join('');
+    private generatesBannersString(): string {
+        return this.bannerIds.map((bannerId) => `<div id="${bannerId}"></div>`).join('')
     }
 
     /**
@@ -65,11 +63,16 @@ export class AdblockDetector {
      * @memberof AdblockDetector
      */
     checkVisibility(bannerId: BannerIdType) {
-        const el = document.querySelector<HTMLDivElement>(`#${bannerId}`);
+        const element = document.querySelector<HTMLDivElement>(`#${bannerId}`)
 
-        if (el) return el.offsetParent;
-        
-        return null;
+        if (element) {
+            return element.offsetParent
+        }
+
+        return null
     }
 
+    private isBrowser() {
+        return typeof window !== 'undefined'
+    }
 }
