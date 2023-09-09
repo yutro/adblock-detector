@@ -23,7 +23,9 @@ export class AdblockDetector {
      */
     private init(): void {
         if (!this.isBrowser()) {
-            throw new Error('Detection on server side is not supported. Please use library only on client side.')
+            console.error('Detection on server side is not supported. Please use library only on client side.')
+
+            return
         }
 
         const dataContainer = document.createElement('div')
@@ -40,7 +42,7 @@ export class AdblockDetector {
      * @memberof AdblockDetector
      */
     detect(): boolean {
-        return !this.bannerIds.every((bannerId) => this.checkVisibility(bannerId))
+        return !this.isBrowser() ? false : !this.bannerIds.every((bannerId) => this.checkVisibility(bannerId))
     }
 
     /**
