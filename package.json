@@ -25,13 +25,13 @@
     "addetection",
     "adblockerdetection",
     "detectads",
-		"advertising",
-		"ad",
-		"block",
+	"advertising",
+	"ad",
+	"block",
     "blockads",
-		"lock",
-		"detection",
-		"detecting"
+	"lock",
+	"detection",
+	"detecting"
   ],
   "author": "icokie (Yury Troynov)",
   "license": "MIT",
@@ -40,6 +40,6 @@
   },
   "homepage": "https://github.com/Icokie/adblock-detector#readme",
   "devDependencies": {
-    "typescript": "4.7.3"
+    "typescript": "5.2.2"
   }
 }
